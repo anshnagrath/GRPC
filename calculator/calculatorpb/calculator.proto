@@ -12,6 +12,38 @@ message SumResponse{
 }
 
 
+message PrimeNumberDecompositionRequest {
+    int64 number = 1;
+}
+message PrimeNumberDecompositionResponse{
+    int64 prime_factor = 1;
+}
+message ComputeAverageRequest{
+    int32 number = 1;
+}
+message ComputeAverageResponse {
+    double average =1;
+}
+message  FindMaximumRequest {
+    int32 number = 1;
+}
+message FindMaximumResponse {
+    int32  Maximum = 1;
+}
+message  SquarerootRequest {
+    int32 number = 1;
+}
+message SquarerootResponse {
+    double number_root = 1;
+
+}
+
 service CalculatorService {
     rpc Sum(SumRequest) returns (SumResponse){};
+    rpc PrimeNumberDecompostion(PrimeNumberDecompositionRequest) returns(stream PrimeNumberDecompositionResponse){};
+    rpc ComputeAverge(stream ComputeAverageRequest) returns (ComputeAverageResponse){};
+    rpc FindMaxminum(stream FindMaximumRequest) returns(stream FindMaximumResponse){};
+    //Error handling
+    //this rpc will throw error if number in negative : an invalid argument
+    rpc SquareRoot(SquarerootRequest) returns (SquarerootResponse){}
 }

@@ -19,9 +19,36 @@ message GreetManyRequest {
 message GreetManyResponse{
     string result = 1;
 }
+message LongGreetManyRequest {
+    Greeting greeting = 1;
+}
+message LongGreetManyResponse {
+    string result =1 ;
+}
+message GreeteveryoneRequest{
+    Greeting greeting = 1;
+}
+message GreeteveryoneResponse {
+    string result = 1;
+}
+message GreetWithDeadlineRequest {
+    Greeting greeting = 1;
+}
+
+message GreatWithDeadlineResponse {
+    string result = 1;
+}
+
 service GreetingService {
  // Uniary Api
  rpc Greet(GreetRequest) returns (GreetResponse) {};
  // Server Streaming Api
  rpc GreetMany(GreetManyRequest) returns ( stream GreetManyResponse) {};
+ // Client Side Streaming
+ rpc LongGreet(stream LongGreetManyRequest) returns( LongGreetManyResponse){};
+ // Bi Di Streaming
+ rpc GreetEveryone(stream GreeteveryoneRequest) returns (stream GreeteveryoneResponse){};
+ // UnaryWithDeadline
+ rpc GreetWithDeadline(GreetWithDeadlineRequest) returns (GreatWithDeadlineResponse){};
+ 
 }
