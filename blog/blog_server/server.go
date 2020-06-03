@@ -163,7 +163,6 @@ func (*server) ListBlog(req *blogpb.ListBlogRequest, stream blogpb.BlogService_L
 			Content:  data.Content,
 		}})
 
-		
 	}
 	if err := cursor.Err(); err != nil {
 		return status.Errorf(codes.Internal, fmt.Sprintf("Curesor error:%v", err))
